@@ -1,10 +1,13 @@
 import React from 'react';
+import CarreraList from '../components/carrera/base/CarreraList';
 
 const CarrerasPage = () => {
     return (
-        <div>
+        <>
             Ubicado en carreras page
-        </div>
+            <CarreraList />
+        </>
+
     );
 };
 
