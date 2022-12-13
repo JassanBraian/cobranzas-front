@@ -36,14 +36,22 @@ const CarreraList = () => {
                 </thead>
                 <tbody>
                     {
-                        carreras.map((carrera, index) =>
-                            <CarreraItem
-                                carrera={carrera}
-                                key={index}
-                                openEditModal={openEditModal}
-                                openDeleteModal={openDeleteModal}
-                            />
-                        )
+                        carreras ?
+                            carreras.map((carrera, index) =>
+                                <CarreraItem
+                                    carrera={carrera}
+                                    key={index}
+                                    index={index}
+                                    openEditModal={openEditModal}
+                                    openDeleteModal={openDeleteModal}
+                                />
+                            )
+                            :
+                            <tr>
+                                <td colSpan={4} className="text-center">
+                                    No hay carreras cargadas
+                                </td>
+                            </tr>
                     }
                 </tbody>
             </Table>

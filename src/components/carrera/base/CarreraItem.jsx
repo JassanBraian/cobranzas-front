@@ -1,8 +1,8 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import CarreraContext from '../../../context/carrera/CarrerasContext';
-import { Button } from 'bootstrap';
+import { Button } from 'react-bootstrap';
 
-const CarreraItem = (carrera, index, openEditModal, openDeleteModal) => {
+const CarreraItem = ({ carrera, index, openEditModal, openDeleteModal }) => {
 
     const { getCarrera } = useContext(CarreraContext);
 
@@ -11,7 +11,7 @@ const CarreraItem = (carrera, index, openEditModal, openDeleteModal) => {
             <tr>
                 <td> {index + 1} </td>
                 <td> {carrera.nombre} </td>
-                <td className="actions-column">
+                <td className="text-center">
                     <Button
                         variant="info"
                         onClick={() => {
