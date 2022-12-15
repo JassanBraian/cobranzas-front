@@ -5,6 +5,8 @@ import { Table, Button } from 'react-bootstrap';
 import AddCarreraModal from '../modals/AddCarreraModal';
 import EditCarreraModal from '../modals/EditCarreraModal';
 import DeleteCarreraModal from '../modals/DeleteCarreraModal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAdd } from "@fortawesome/free-solid-svg-icons";
 
 const CarreraList = () => {
     const { getCarreras, carreras } = useContext(CarreraContext);
@@ -26,19 +28,20 @@ const CarreraList = () => {
 
     return (
         <>
-            <div className="row justify-content-center align-items-center">
-                <div className="col">
+            <div className="row">
+                <div className="col-6">
                     <h3>Listado de Carreras</h3>
                 </div>
-                <div className="col">
+                <div className="col-6 d-flex justify-content-end mb-1">
                     <Button
-                        variant="primary"
+                        variant="success"
                         onClick={() => setShowAddCarreraModal(true)}
                     >
-                        Añadir
+                        <FontAwesomeIcon icon={faAdd} />
                     </Button>
                 </div>
             </div>
+
             <Table striped bordered hover variant="dark">
                 <thead>
                     <tr>

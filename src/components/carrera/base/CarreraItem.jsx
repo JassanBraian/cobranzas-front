@@ -1,6 +1,8 @@
 import { useContext, useEffect } from 'react';
 import CarreraContext from '../../../context/carrera/CarrerasContext';
 import { Button } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faPen } from "@fortawesome/free-solid-svg-icons";
 
 const CarreraItem = ({ carrera, index, openEditModal, openDeleteModal }) => {
 
@@ -13,13 +15,14 @@ const CarreraItem = ({ carrera, index, openEditModal, openDeleteModal }) => {
                 <td> {carrera.nombre} </td>
                 <td className="text-center">
                     <Button
-                        variant="info"
+                        variant="warning"
+                        className='me-2'
                         onClick={() => {
                             getCarrera(carrera.id);
                             openEditModal();
                         }}
                     >
-                        Editar
+                        <FontAwesomeIcon icon={faPen} />
                     </Button>
                     <Button
                         variant="danger"
@@ -28,7 +31,7 @@ const CarreraItem = ({ carrera, index, openEditModal, openDeleteModal }) => {
                             openDeleteModal();
                         }}
                     >
-                        Eliminar
+                        <FontAwesomeIcon icon={faTrash} />
                     </Button>
                 </td>
             </tr>
