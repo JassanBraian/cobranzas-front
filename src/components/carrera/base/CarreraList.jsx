@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import CarreraContext from '../../../context/carrera/CarrerasContext';
 import CarreraItem from './CarreraItem';
-import { Table } from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
 import AddCarreraModal from '../modals/AddCarreraModal';
 import EditCarreraModal from '../modals/EditCarreraModal';
 import DeleteCarreraModal from '../modals/DeleteCarreraModal';
@@ -26,6 +26,19 @@ const CarreraList = () => {
 
     return (
         <>
+            <div className="row justify-content-center align-items-center">
+                <div className="col">
+                    <h3>Listado de Carreras</h3>
+                </div>
+                <div className="col">
+                    <Button
+                        variant="primary"
+                        onClick={() => setShowAddCarreraModal(true)}
+                    >
+                        Añadir
+                    </Button>
+                </div>
+            </div>
             <Table striped bordered hover variant="dark">
                 <thead>
                     <tr>

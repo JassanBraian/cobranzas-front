@@ -15,7 +15,7 @@ const CarrerasProvider = ({ children }) => {
   const getCarreras = async () => {
     try {
       const res = await clientAxios.get(`${API_URL_JSON_SERVER}/carrera`);
-      res.status && setValues({ ...values, carreras: res.data });
+      res.status === 200 && setValues({ ...values, carreras: res.data });
     } catch (error) {
       throw error;
     }
@@ -23,8 +23,8 @@ const CarrerasProvider = ({ children }) => {
 
   const getCarrera = async carreraId => {
     try {
-      // const res = await clientAxios.get(`http://localhost:4000/api/v1/product/${productId}`);
-      // res && setValues({ ...values, currentProduct: res.data.product });
+      const res = await clientAxios.get(`${API_URL_JSON_SERVER}/carrera/${carreraId}`);
+      res.status === 200 && setValues({ ...values, currentCarrera: res.data });
     } catch (error) {
       throw error;
     }
@@ -32,8 +32,8 @@ const CarrerasProvider = ({ children }) => {
 
   const addCarrera = async carrera => {
     try {
-      //   const res = await clientAxios.post('http://localhost:4000/api/v1/product/', product);
-      //   res && setValues({ ...values, products: res.data.currentProduct });
+      const res = await clientAxios.post(`${API_URL_JSON_SERVER}/carrera`, carrera);
+      res.status === 201 && await getCarreras();
     } catch (error) {
       throw error;
     }
@@ -41,8 +41,8 @@ const CarrerasProvider = ({ children }) => {
 
   const updateCarrera = async carrera => {
     try {
-      // const res = await clientAxios.put(`http://localhost:4000/api/v1/product/${product._id}`, product);
-      // res && await getProducts();
+      const res = await clientAxios.put(`${API_URL_JSON_SERVER}/carrera/${carrera.id}`, carrera);
+      res.status === 200 && await getCarreras();
     } catch (error) {
       throw error;
     }
@@ -50,8 +50,8 @@ const CarrerasProvider = ({ children }) => {
 
   const deleteCarrera = async carreraId => {
     try {
-      //   const res = await clientAxios.delete(`http://localhost:4000/api/v1/product/${productId}`);
-      //   res && await getProducts();
+      const res = await clientAxios.delete(`${API_URL_JSON_SERVER}/carrera/${carreraId}`);
+      res.status === 200 && await getCarreras();
     } catch (error) {
       throw error;
     }
@@ -62,6 +62,9 @@ const CarrerasProvider = ({ children }) => {
       ...values,
       getCarreras,
       getCarrera,
+      addCarrera,
+      deleteCarrera,
+      updateCarrera
     }}>
       {children}
     </CarrerasContext.Provider>

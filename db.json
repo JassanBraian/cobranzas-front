@@ -1,21 +1,21 @@
 {
-    "carrera": [
-        {
-            "nombre": "Tecnicatura Universitaria en Programación",
-            "id": 1
-        },
-        {
-            "nombre": "Licenciatura en Higiene y Seguridad",
-            "id": 2
-        },
-        {
-            "nombre": "Tecnicatura en Mecatrónica",
-            "id": 2
-        }
-    ],
-    "usuario": [
-        {
-            "nombre": "braianjassan"
-        }
-    ]
+  "carrera": [
+    {
+      "nombre": "Tecnicatura Universitaria en Programación",
+      "id": 1
+    },
+    {
+      "nombre": "Licenciatura en Higiene y Seguridad",
+      "id": 2
+    },
+    {
+      "nombre": "Tecnicatura en Mecatrónica",
+      "id": 2
+    }
+  ],
+  "usuario": [
+    {
+      "nombre": "braianjassan"
+    }
+  ]
 }

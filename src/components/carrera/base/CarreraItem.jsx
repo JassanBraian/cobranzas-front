@@ -15,7 +15,7 @@ const CarreraItem = ({ carrera, index, openEditModal, openDeleteModal }) => {
                     <Button
                         variant="info"
                         onClick={() => {
-                            getCarrera(carrera._id);
+                            getCarrera(carrera.id);
                             openEditModal();
                         }}
                     >
@@ -24,7 +24,7 @@ const CarreraItem = ({ carrera, index, openEditModal, openDeleteModal }) => {
                     <Button
                         variant="danger"
                         onClick={() => {
-                            getCarrera(carrera._id);
+                            getCarrera(carrera.id);
                             openDeleteModal();
                         }}
                     >
