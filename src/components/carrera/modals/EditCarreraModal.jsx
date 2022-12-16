@@ -43,7 +43,7 @@ const EditCarreraModal = ({ show, onHide }) => {
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
             >
-                <Modal.Header>
+                <Modal.Header className="modaltitle">
                     <Modal.Title>
                         Editar carrera
                     </Modal.Title>
@@ -67,10 +67,10 @@ const EditCarreraModal = ({ show, onHide }) => {
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="success" type="submit">
-                            Agregar carrera
+                            Guardar
                         </Button>
                         <Button variant="danger" onClick={onHide}>
-                            Close
+                            Cancelar
                         </Button>
                     </Modal.Footer>
                 </Form>

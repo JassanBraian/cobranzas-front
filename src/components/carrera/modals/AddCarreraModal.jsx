@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import CarrerasContext from '../../../context/carrera/CarrerasContext';
+import '../../../css/entities/carrera/carrera.css';
 
 const AddCarreraModal = ({ show, onHide }) => {
     const { addCarrera } = useContext(CarrerasContext);
@@ -40,7 +41,7 @@ const AddCarreraModal = ({ show, onHide }) => {
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
             >
-                <Modal.Header>
+                <Modal.Header className='modaltitle'>
                     <Modal.Title>
                         Agregar carrera
                     </Modal.Title>
@@ -64,10 +65,10 @@ const AddCarreraModal = ({ show, onHide }) => {
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="success" type="submit">
-                            Agregar carrera
+                            Guardar
                         </Button>
                         <Button variant="danger" onClick={onHide}>
-                            Close
+                            Cancelar
                         </Button>
                     </Modal.Footer>
                 </Form>

@@ -17,22 +17,22 @@ const DeleteCarreraModal = ({ show, onHide }) => {
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
             >
-                <Modal.Header>
+                <Modal.Header className='modaltitle'>
                     <Modal.Title>
-                        ¿Estás seguro que deseas eliminar esta carrera?
+                        ¿Está seguro de eliminar este registro?
                     </Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
-                    <p>Se borrará permanentemente</p>
+                    <p>El registro será borrado de forma permanente.</p>
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={onHide}>
-                        Cancelar
-                    </Button>
                     <Button variant="danger" onClick={confirmDeleteCarrera}>
                         Eliminar
+                    </Button>
+                    <Button variant="secondary" onClick={onHide}>
+                        Cancelar
                     </Button>
                 </Modal.Footer>
             </Modal>

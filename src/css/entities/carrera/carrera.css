@@ -1,0 +1,15 @@
+:root {
+    --white: #fff;
+    --black: #000;
+    --red: #ff0000;
+    --gray: #4A4A4A;
+    --lightgrey: #D6D6D6;
+    --green: #00A650;
+    --purple: #3f2f59; 
+    --purple2: #5e4485;
+}
+
+.modaltitle {
+    background-color: var(--purple2);
+    color: var(--white);
+}
