@@ -5,6 +5,8 @@
     --gray: #4A4A4A;
     --lightgrey: #D6D6D6;
     --green: #00A650;
+    --purple: #3f2f59; 
+    --purple2: #5e4485;
 }
 
 * {
@@ -13,24 +15,23 @@
     padding: 0;
 }
 
+body{
+    background-size: 20px 20px;
+    font-family: 'Verdana';
+    background-color:  var(--lightgrey) !important;
+}
+
+h1, h2, h3 {
+    font-family: 'TT Supermolot';
+}
+
 img {
     max-width: 100%;
     height: auto;
 }
 
-body{
-    background-color: #fff;
-    background-size: 20px 20px;
-    font-family: 'Verdana';
-}
-
-h1, h2 {
-    font-family: 'TT Supermolot';
-}
-
 .app {
     max-width: 1250px;
     width: 100%;
-    margin: 100px auto;
-    /* box-shadow: 0 0 5px #ccc; */
+    margin: 50px auto; 
 }
