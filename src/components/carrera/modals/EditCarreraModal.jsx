@@ -6,11 +6,12 @@ const EditCarreraModal = ({ show, onHide }) => {
     const { currentCarrera, updateCarrera } = useContext(CarrerasContext);
 
     const initialFormValues = {
-        nombre: ''
+        nombre: '',
+        precioCuo: 0
     };
 
     const [form, setForm] = useState(initialFormValues);
-    const { nombre } = form;
+    const { nombre, precioCuo } = form;
 
     const [errorMsg, setErrorMsg] = useState(null);
 
@@ -27,7 +28,7 @@ const EditCarreraModal = ({ show, onHide }) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        if (nombre === '') {
+        if (nombre === '' || !precioCuo) {
             setErrorMsg('Todos los campos son obligatorios');
             return;
         }
@@ -57,6 +58,17 @@ const EditCarreraModal = ({ show, onHide }) => {
                                 placeholder="Nombre de la carrera"
                                 name="nombre"
                                 value={nombre}
+                                onChange={handleChange}
+                                onFocus={() => setErrorMsg(null)}
+                            />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Precio Cuota</Form.Label>
+                            <Form.Control
+                                type="number"
+                                placeholder="Precio de la Cuota"
+                                name="precioCuo"
+                                value={precioCuo}
                                 onChange={handleChange}
                                 onFocus={() => setErrorMsg(null)}
                             />

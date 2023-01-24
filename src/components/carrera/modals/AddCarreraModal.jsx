@@ -7,11 +7,12 @@ const AddCarreraModal = ({ show, onHide }) => {
     const { addCarrera } = useContext(CarrerasContext);
 
     const initialFormValues = {
-        nombre: ''
+        nombre: '',
+        precioCuo: 0
     };
 
     const [form, setForm] = useState(initialFormValues);
-    const { nombre } = form;
+    const { nombre, precioCuo } = form;
 
     const [errorMsg, setErrorMsg] = useState(null);
 
@@ -24,7 +25,7 @@ const AddCarreraModal = ({ show, onHide }) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        if (nombre === '') {
+        if (nombre === '' || !precioCuo) {
             setErrorMsg('Todos los campos son obligatorios');
             return;
         }
@@ -59,13 +60,24 @@ const AddCarreraModal = ({ show, onHide }) => {
                                 onFocus={() => setErrorMsg(null)}
                             />
                         </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Precio Cuota</Form.Label>
+                            <Form.Control
+                                type="number"
+                                placeholder="Precio de la Cuota"
+                                name="precioCuo"
+                                value={precioCuo}
+                                onChange={handleChange}
+                                onFocus={() => setErrorMsg(null)}
+                            />
+                        </Form.Group>
                         <div>
                             {errorMsg && (<p className="error-msg">{errorMsg}</p>)}
                         </div>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="success" type="submit">
-                            Guardar
+                            Añadir
                         </Button>
                         <Button variant="danger" onClick={onHide}>
                             Cancelar
