@@ -10,7 +10,27 @@
     },
     {
       "nombre": "Tecnicatura en Mecatrónica",
+      "id": 3
+    }
+  ],
+  "preciocuota": [
+    {
+      "fkCarrera": 1,
+      "monto": 9000,
+      "fecha": "1/1/2023",
+      "id": 1
+    },
+    {
+      "fkCarrera": 2,
+      "monto": 8000,
+      "fecha": "1/1/2023",
       "id": 2
+    },
+    {
+      "fkCarrera": 3,
+      "monto": 7000,
+      "fecha": "1/1/2023",
+      "id": 3
     }
   ],
   "usuario": [

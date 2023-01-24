@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import PrecioCuoContext from './PrecioCuoContext';
 import { API_URL_JSON_SERVER } from '../../config/jsonserver/connection';
 import clientAxios from '../../config/axios/axios';

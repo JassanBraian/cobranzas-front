@@ -47,6 +47,7 @@ const CarreraList = () => {
                     <tr>
                         <th>#</th>
                         <th>Nombre</th>
+                        <th>Precio Cuota</th>
                         <th className='text-center'>Acciones</th>
                     </tr>
                 </thead>

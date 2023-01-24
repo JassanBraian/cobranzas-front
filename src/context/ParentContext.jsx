@@ -1,11 +1,14 @@
 import React from 'react';
 import CarrerasProvider from './carrera/CarrerasProvider';
+import PrecioCuoProvider from './precioCuota/PrecioCuoProvider';
 
 const ParentContext = ({ children }) => {
     return (
-        <CarrerasProvider>
-            {children}
-        </CarrerasProvider>
+        <PrecioCuoProvider>
+            <CarrerasProvider>
+                {children}
+            </CarrerasProvider>
+        </PrecioCuoProvider>
     );
 };
 

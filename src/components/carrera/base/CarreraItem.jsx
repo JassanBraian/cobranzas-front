@@ -13,6 +13,7 @@ const CarreraItem = ({ carrera, index, openEditModal, openDeleteModal }) => {
             <tr>
                 <td> {index + 1} </td>
                 <td> {carrera.nombre} </td>
+                <td> ${carrera.precioCuo} </td>
                 <td className="text-center">
                     <Button
                         variant="warning"

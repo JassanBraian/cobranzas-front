@@ -14,8 +14,25 @@ const CarrerasProvider = ({ children }) => {
 
   const getCarreras = async () => {
     try {
-      const res = await clientAxios.get(`${API_URL_JSON_SERVER}/carrera`);
-      res.status === 200 && setValues({ ...values, carreras: res.data });
+      // Con .net traer las carreras con su respectivo precio de cuota actualizado (ultima fecha alta). 
+      // Con react descomentar estas dos lineas y comentar de la 22 hasta la 35
+      //const res = await clientAxios.get(`${API_URL_JSON_SERVER}/carrera`);
+      //res.status === 200 && setValues({ ...values, carreras: res.data });
+      
+      const resCarreras = await clientAxios.get(`${API_URL_JSON_SERVER}/carrera`);
+      const resPreciosCuo = await clientAxios.get(`${API_URL_JSON_SERVER}/preciocuota`);
+
+      if (resCarreras.status === 200 && resCarreras.data
+        && resPreciosCuo.status === 200 && resPreciosCuo.data) {
+        resCarreras.data.map(carrera => {
+          const preciosCuoCarr = resPreciosCuo.data
+            .filter(preCuo => preCuo.fkCarrera === carrera.id);
+          const precioCuoAct = preciosCuoCarr[preciosCuoCarr.length - 1];
+          carrera.precioCuo = precioCuoAct.monto;
+        });
+
+        setValues({ ...values, carreras: resCarreras.data });
+      }
     } catch (error) {
       throw error;
     }
