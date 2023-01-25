@@ -21,6 +21,16 @@ const PrecioCuoProvider = ({ children }) => {
         }
     }
 
+    const getPreciosCuoByCarrId = async carrId => {
+        try {
+            const res = await clientAxios.get(`${API_URL_JSON_SERVER}/preciocuota`);
+            res.status === 200
+                && setValues({ ...values, preciosCuo: res.data.filter(preCuo => preCuo.fkCarrera === carrId) });
+        } catch (error) {
+            throw error;
+        }
+    }
+
     const getPrecioCuo = async precioCuoId => {
         try {
             const res = await clientAxios.get(`${API_URL_JSON_SERVER}/preciocuota/${precioCuoId}`);
@@ -61,6 +71,7 @@ const PrecioCuoProvider = ({ children }) => {
         <PrecioCuoContext.Provider value={{
             ...values,
             getPreciosCuo,
+            getPreciosCuoByCarrId,
             getPrecioCuo,
             addPrecioCuo,
             deletePrecioCuo,

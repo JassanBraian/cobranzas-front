@@ -7,12 +7,14 @@ import EditCarreraModal from '../modals/EditCarreraModal';
 import DeleteCarreraModal from '../modals/DeleteCarreraModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAdd } from "@fortawesome/free-solid-svg-icons";
+import HistoryPrecioCuoModal from '../../preciocuota/modals/HistoryPrecioCuoModal';
 
 const CarreraList = () => {
     const { getCarreras, carreras } = useContext(CarreraContext);
     const [showAddCarreraModal, setShowAddCarreraModal] = useState(false);
     const [showEditCarreraModal, setShowEditCarreraModal] = useState(false);
     const [showDeleteCarreraModal, setShowDeleteCarreraModal] = useState(false);
+    const [showHistoryPrecioCuoMod, setShowHistoryPrecioCuoMod] = useState(false);
 
     useEffect(() => {
         getCarreras();
@@ -24,6 +26,10 @@ const CarreraList = () => {
 
     const openDeleteModal = () => {
         setShowDeleteCarreraModal(true);
+    };
+
+    const openHistoryPrecioCuoMod = () => {
+        setShowHistoryPrecioCuoMod(true);
     };
 
     return (
@@ -61,6 +67,7 @@ const CarreraList = () => {
                                     index={index}
                                     openEditModal={openEditModal}
                                     openDeleteModal={openDeleteModal}
+                                    openHistoryPrecioCuoMod={openHistoryPrecioCuoMod}
                                 />
                             )
                             :
@@ -86,6 +93,11 @@ const CarreraList = () => {
             <DeleteCarreraModal
                 show={showDeleteCarreraModal}
                 onHide={() => setShowDeleteCarreraModal(false)}
+            />
+
+            <HistoryPrecioCuoModal
+                show={showHistoryPrecioCuoMod}
+                onHide={() => setShowHistoryPrecioCuoMod(false)}
             />
 
         </>
