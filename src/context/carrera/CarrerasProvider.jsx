@@ -72,6 +72,8 @@ const CarrerasProvider = ({ children }) => {
       const precioCuo = parseFloat(carrera.precioCuo);
       delete carrera.precioCuo;
 
+      carrera.cantCuotas = parseFloat(carrera.cantCuotas);
+
       const resNewCarrera = await clientAxios.post(`${API_URL_JSON_SERVER}/carrera`, carrera);
       if(resNewCarrera.status === 201) {
         addPrecioCuo({
@@ -90,6 +92,8 @@ const CarrerasProvider = ({ children }) => {
     try {
       const precioCuo = parseFloat(carrera.precioCuo);
       delete carrera.precioCuo;
+
+      carrera.cantCuotas = parseFloat(carrera.cantCuotas);
 
       const resUpdateCarrera = await clientAxios.put(`${API_URL_JSON_SERVER}/carrera/${carrera.id}`, carrera);
       if(resUpdateCarrera.status === 200){

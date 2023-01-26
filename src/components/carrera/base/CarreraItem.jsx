@@ -14,7 +14,8 @@ const CarreraItem = ({ carrera, index, openEditModal, openDeleteModal, openHisto
         <>
             <tr>
                 <td> {index + 1} </td>
-                <td> {carrera.nombre} </td>
+                <td> {carrera.descripcion} </td>
+                <td> {carrera.cantCuotas} </td>
                 <td> ${carrera.precioCuo} </td>
                 <td className="text-center">
                     <Button

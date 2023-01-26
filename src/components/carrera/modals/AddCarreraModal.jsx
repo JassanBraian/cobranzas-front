@@ -8,11 +8,12 @@ const AddCarreraModal = ({ show, onHide }) => {
 
     const initialFormValues = {
         descripcion: '',
+        cantCuotas: 0,
         precioCuo: 0
     };
 
     const [form, setForm] = useState(initialFormValues);
-    const { descripcion, precioCuo } = form;
+    const { descripcion, cantCuotas, precioCuo } = form;
 
     const [errorMsg, setErrorMsg] = useState(null);
 
@@ -25,7 +26,7 @@ const AddCarreraModal = ({ show, onHide }) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        if (descripcion === '' || !precioCuo) {
+        if (descripcion === '' || !cantCuotas || !precioCuo) {
             setErrorMsg('Todos los campos son obligatorios');
             return;
         }
@@ -56,6 +57,17 @@ const AddCarreraModal = ({ show, onHide }) => {
                                 placeholder="Nombre de la carrera"
                                 name="descripcion"
                                 value={descripcion}
+                                onChange={handleChange}
+                                onFocus={() => setErrorMsg(null)}
+                            />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Cantidad Cuotas</Form.Label>
+                            <Form.Control
+                                type="number"
+                                placeholder="Cantidad de cuotas"
+                                name="cantCuotas"
+                                value={cantCuotas}
                                 onChange={handleChange}
                                 onFocus={() => setErrorMsg(null)}
                             />

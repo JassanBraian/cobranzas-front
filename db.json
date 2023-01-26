@@ -1,24 +1,39 @@
 {
   "carrera": [
     {
-      "nombre": "Tecnicatura Universitaria en Programación",
+      "descripcion": "Tecnicatura Universitaria en Programación",
+      "cantCuotas": 20,
       "id": 1
     },
     {
-      "nombre": "Licenciatura en Higiene y Seguridad",
+      "descripcion": "Licenciatura en Higiene y Seguridad",
+      "cantCuotas": 30,
       "id": 2
     },
     {
-      "nombre": "Tecnicatura en Mecatrónica",
+      "descripcion": "Tecnicatura en Mecatrónica",
+      "cantCuotas": 20,
       "id": 3
     },
     {
-      "nombre": "Prueba1",
+      "descripcion": "Prueba1",
+      "cantCuotas": 5,
       "id": 4
     },
     {
-      "nombre": "Prueba2",
+      "descripcion": "Prueba2",
+      "cantCuotas": 5,
       "id": 5
+    },
+    {
+      "descripcion": "Prueba05",
+      "cantCuotas": 5,
+      "id": 6
+    },
+    {
+      "descripcion": "Prueba06",
+      "cantCuotas": 6,
+      "id": 7
     }
   ],
   "preciocuota": [
@@ -63,6 +78,24 @@
       "monto": 5560,
       "fecha": "1/24/2023",
       "id": 7
+    },
+    {
+      "fkCarrera": 6,
+      "monto": 10000,
+      "fecha": "1/26/2023",
+      "id": 8
+    },
+    {
+      "fkCarrera": 7,
+      "monto": 5000,
+      "fecha": "1/26/2023",
+      "id": 9
+    },
+    {
+      "fkCarrera": 7,
+      "monto": 5000,
+      "fecha": "1/26/2023",
+      "id": 10
     }
   ],
   "usuario": [
