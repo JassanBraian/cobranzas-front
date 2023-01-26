@@ -38,6 +38,7 @@ const Header = () => {
                 <Nav className="me-auto">
                     <Nav.Link onClick={() => goToPage('/')}>Home</Nav.Link>
                     <Nav.Link onClick={() => goToPage('/carreras')}>Carreras</Nav.Link>
+                    <Nav.Link onClick={() => goToPage('/alumnos')}>Alumnos</Nav.Link>
                 </Nav>
             </Navbar>
         </>

@@ -32,6 +32,8 @@ const AlumnoProvider = ({ children }) => {
 
     const addAlumno = async alumno => {
         try {
+            alumno.fechaIngreso = new Date(Date.now()).toLocaleDateString();
+            alumno.porcBeca = parseFloat(alumno.porcBeca);
             const res = await clientAxios.post(`${API_URL_JSON_SERVER}/alumno`, alumno);
             res.status === 201 && await getAlumnos();
         } catch (error) {
@@ -41,6 +43,8 @@ const AlumnoProvider = ({ children }) => {
 
     const updateAlumno = async alumno => {
         try {
+            //verif que no se pierda la fecha de ingreso una vez conectado a .net
+            alumno.porcBeca = parseFloat(alumno.porcBeca);
             const res = await clientAxios.put(`${API_URL_JSON_SERVER}/alumno/${alumno.id}`, alumno);
             res.status === 200 && await getAlumnos();
         } catch (error) {

@@ -98,6 +98,28 @@
       "id": 10
     }
   ],
+  "alumno": [
+    {
+      "nombre": "Jose",
+      "apellido": "Gonzales",
+      "dni": "30303030",
+      "legajo": "456782",
+      "mail": "josegonzales@gmail.com",
+      "porcBeca": 0,
+      "fechaIngreso": "1/26/2023",
+      "id": 1
+    },
+    {
+      "apellido": "Jassan",
+      "nombre": "Braian",
+      "dni": "40404040",
+      "legajo": "456789",
+      "mail": "braian@gmail.com",
+      "porcBeca": 20,
+      "fechaIngreso": "1/26/2023",
+      "id": 2
+    }
+  ],
   "usuario": [
     {
       "nombre": "braianjassan"
