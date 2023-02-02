@@ -37,6 +37,7 @@ const EditCarreraModal = ({ show, onHide }) => {
         updateCarrera(form);
         onHide();
     };
+    
     return (
         <>
             <Modal

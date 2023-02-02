@@ -100,7 +100,7 @@
   ],
   "alumno": [
     {
-      "nombre": "Jose",
+      "nombre": "Jorge",
       "apellido": "Gonzales",
       "dni": "30303030",
       "legajo": "456782",
@@ -117,6 +117,24 @@
       "mail": "braian@gmail.com",
       "porcBeca": 20,
       "fechaIngreso": "1/26/2023",
+      "id": 2
+    }
+  ],
+  "cuota": [
+    {
+      "numero": 1,
+      "estadoCuo": "Impago",
+      "fecha": "1/31/2023",
+      "fkAlumno": 1,
+      "fkCarrera": 1,
+      "id": 1
+    },
+    {
+      "numero": 2,
+      "estadoCuo": "Impago",
+      "fecha": "1/31/2023",
+      "fkAlumno": 2,
+      "fkCarrera": 1,
       "id": 2
     }
   ],

@@ -39,6 +39,7 @@ const Header = () => {
                     <Nav.Link onClick={() => goToPage('/')}>Home</Nav.Link>
                     <Nav.Link onClick={() => goToPage('/carreras')}>Carreras</Nav.Link>
                     <Nav.Link onClick={() => goToPage('/alumnos')}>Alumnos</Nav.Link>
+                    <Nav.Link onClick={() => goToPage('/cuotas')}>Cuotas</Nav.Link>
                 </Nav>
             </Navbar>
         </>

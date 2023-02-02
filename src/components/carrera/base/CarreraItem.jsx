@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import CarreraContext from '../../../context/carrera/CarrerasContext';
 import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -22,7 +22,7 @@ const CarreraItem = ({ carrera, index, openEditModal, openDeleteModal, openHisto
                         variant="success"
                         className='me-2'
                         onClick={() => {
-                            getPreciosCuoByCarrId(carrera.id)
+                            getPreciosCuoByCarrId(carrera.id);
                             openHistoryPrecioCuoMod();
                         }}
                     >

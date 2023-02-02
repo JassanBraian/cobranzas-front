@@ -1,4 +1,3 @@
-import React from 'react';
 import '../css/common/base-page.css';
 import AlumnoList from '../components/alumno/base/AlumnoList';
 
