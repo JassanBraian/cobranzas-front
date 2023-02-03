@@ -61,6 +61,8 @@ const AlumnoProvider = ({ children }) => {
         }
     }
 
+    const clearCurrentAlumno = () => setValues({ ...values, currentAlumno: {} });
+
     return (
         <AlumnoContext.Provider value={{
             ...values,
@@ -68,7 +70,8 @@ const AlumnoProvider = ({ children }) => {
             getAlumno,
             addAlumno,
             updateAlumno,
-            deleteAlumno
+            deleteAlumno,
+            clearCurrentAlumno
         }}>
             {children}
         </AlumnoContext.Provider>

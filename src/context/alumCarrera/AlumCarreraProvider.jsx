@@ -58,6 +58,8 @@ const AlumCarreraProvider = ({ children }) => {
         }
     };
 
+    const clearAlumCarreras = () => setValues({ ...values, alumnosCarreras: [] });
+
     return (
         <AlumCarreraContext.Provider value={{
             ...values,
@@ -65,7 +67,8 @@ const AlumCarreraProvider = ({ children }) => {
             getAlumCarrerasByAlumId,
             getAlumCarrera,
             addAlumCarrera,
-            deleteAlumCarrera
+            deleteAlumCarrera,
+            clearAlumCarreras
         }}>
             {children}
         </AlumCarreraContext.Provider>
