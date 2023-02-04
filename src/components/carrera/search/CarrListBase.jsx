@@ -11,15 +11,14 @@ const CarrListBase = ({ closeSearchModal }) => {
     const { alumnosCarreras, clearAlumCarreras, getAlumCarrerasByAlumId } = useContext(AlumCarreraContext);
     const { currentAlumno } = useContext(AlumnoContext);
     const { getCarrera } = useContext(CarreraContext);
-
+    
     useEffect(() => {
         clearAlumCarreras();
-    }, [])
+    }, []);
 
     useEffect(() => {
         getAlumCarrerasByAlumId(currentAlumno.id);
-    }, [currentAlumno])
-
+    }, [currentAlumno]);
 
     return (
         <Table striped bordered hover variant="dark">
@@ -34,9 +33,9 @@ const CarrListBase = ({ closeSearchModal }) => {
             </thead>
             <tbody>
                 {
-                    alumnosCarreras ?
+                    alumnosCarreras && alumnosCarreras.length > 0 ?
                         alumnosCarreras.map((alumCarr, index) =>
-                            <tr>
+                            <tr key={index}>
                                 <td> {index + 1} </td>
                                 <td> {alumCarr.carrera.descripcion} </td>
                                 <td> {alumCarr.carrera.cantCuotas} </td>
@@ -57,8 +56,8 @@ const CarrListBase = ({ closeSearchModal }) => {
                         )
                         :
                         <tr>
-                            <td colSpan={4} className="text-center">
-                                No hay carreras cargadas
+                            <td colSpan={5} className="text-center">
+                                El Alumno seleccionado no está inscripto a alguna Carrera
                             </td>
                         </tr>
                 }

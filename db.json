@@ -138,6 +138,18 @@
       "id": 2
     }
   ],
+  "alumCarrera": [
+    {
+      "fkAlumno": 1,
+      "fkCarrera": 1,
+      "id": 1
+    },
+    {
+      "fkAlumno": 1,
+      "fkCarrera": 2,
+      "id": 2
+    }
+  ],
   "usuario": [
     {
       "nombre": "braianjassan"

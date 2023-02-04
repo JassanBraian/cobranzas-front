@@ -23,9 +23,34 @@ const AlumCarreraProvider = ({ children }) => {
 
     const getAlumCarrerasByAlumId = async alumId => {
         try {
-            const res = await clientAxios.get(`${API_URL_JSON_SERVER}/alumcarrera`);
-            res.status === 200
-                && setValues({ ...values, alumnosCarreras: res.data.filter(alumCarr => alumCarr.fkAlumno === alumId) });
+            const resAlumCarr = await clientAxios.get(`${API_URL_JSON_SERVER}/alumcarrera`);
+
+            const resCarreras = await clientAxios.get(`${API_URL_JSON_SERVER}/carrera`);
+            const resPreciosCuo = await clientAxios.get(`${API_URL_JSON_SERVER}/preciocuota`);
+
+            if (resAlumCarr.status === 200 && resAlumCarr.data
+                && resCarreras.status === 200 && resCarreras.data
+                && resPreciosCuo.status === 200 && resPreciosCuo.data) {
+                const carrerasAlum = resAlumCarr.data.filter(alumCarr => alumCarr.fkAlumno === alumId);
+
+                if (carrerasAlum.length > 0) {
+
+                    carrerasAlum.map(carrAlum => {
+                        const carrera = resCarreras.data.filter(carrera => carrera.id === carrAlum.fkCarrera)[0];
+                        const preciosCuoCarr = resPreciosCuo.data
+                            .filter(preCuo => preCuo.fkCarrera === carrera.id);
+                        const precioCuoAct = preciosCuoCarr[preciosCuoCarr.length - 1];
+
+                        carrAlum.carrera = resCarreras.data.filter(carr => carr.id === carrAlum.fkCarrera)[0];
+                        carrAlum.carrera.precioCuo = precioCuoAct.monto;
+                    });
+
+                    setValues({
+                        ...values,
+                        alumnosCarreras: carrerasAlum
+                    });
+                }
+            }
         } catch (error) {
             throw error;
         }
