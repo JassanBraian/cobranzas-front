@@ -85,6 +85,8 @@ const CuotaProvider = ({ children }) => {
         }
     }
 
+    const clearCuotas = () => setValues({ ...values, cuotas: [] });
+
     return (
         <CuotaContext.Provider value={{
             ...values,
@@ -93,7 +95,8 @@ const CuotaProvider = ({ children }) => {
             getCuota,
             addCuota,
             updateCuota,
-            deleteCuota
+            deleteCuota,
+            clearCuotas
         }}>
             {children}
         </CuotaContext.Provider>

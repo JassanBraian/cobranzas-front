@@ -4,16 +4,25 @@ import DeleteCuotaModal from '../modals/DeleteCuotaModal';
 import CuotaContext from '../../../context/cuota/CuotaContext';
 import { Table } from 'react-bootstrap';
 import CuotaItem from './CuotaItem';
+import CarreraContext from '../../../context/carrera/CarrerasContext';
+import AlumnoContext from '../../../context/alumno/AlumnoContext';
 
 const CuotaList = () => {
 
-    const { getCuotas, cuotas } = useContext(CuotaContext);
+    const { getCuotasByAlumAndCarr, cuotas, clearCuotas } = useContext(CuotaContext);
     const [showEditCuotaModal, setShowEditCuotaModal] = useState(false);
     const [showDeleteCuotaModal, setShowDeleteCuotaModal] = useState(false);
 
+    const { currentAlumno } = useContext(AlumnoContext);
+    const { currentCarrera } = useContext(CarreraContext);
+
     useEffect(() => {
-        getCuotas();
-    }, [])
+        clearCuotas();
+    }, []);
+
+    useEffect(() => {
+        getCuotasByAlumAndCarr(currentAlumno.id, currentCarrera.id);
+    }, [currentCarrera]);
 
     const openEditModal = () => {
         setShowEditCuotaModal(true);
@@ -43,7 +52,7 @@ const CuotaList = () => {
                 </thead>
                 <tbody>
                     {
-                        cuotas ?
+                        cuotas && cuotas.length > 0 ?
                             cuotas.map((cuota, index) =>
                                 <CuotaItem
                                     cuota={cuota}
@@ -55,8 +64,8 @@ const CuotaList = () => {
                             )
                             :
                             <tr>
-                                <td colSpan={4} className="text-center">
-                                    No hay cuotas cargadas
+                                <td colSpan={5} className="text-center">
+                                    El Alumno seleccionado no posee Cuotas cargadas en la Carrera Seleccionada
                                 </td>
                             </tr>
                     }
