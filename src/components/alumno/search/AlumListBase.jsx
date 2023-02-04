@@ -32,7 +32,7 @@ const AlumListBase = ({ closeSearchModal }) => {
                     {
                         alumnos ?
                             alumnos.map((alumno, index) =>
-                                <tr>
+                                <tr key={index}>
                                     <td> {index + 1} </td>
                                     <td> {alumno.apellido} </td>
                                     <td> {alumno.nombre} </td>
