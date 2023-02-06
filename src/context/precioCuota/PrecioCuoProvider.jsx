@@ -40,6 +40,24 @@ const PrecioCuoProvider = ({ children }) => {
         }
     }
 
+    const getPrecioCuoActCarr = async carrId => {
+        try {
+            // Sin uso por el momento... verif funcionamiento
+            const resPreciosCuo = await clientAxios.get(`${API_URL_JSON_SERVER}/preciocuota`);
+            if (resPreciosCuo.status === 200 && resPreciosCuo.data) {
+                const preciosCuoCarr = resPreciosCuo.data
+                    .filter(preCuo => preCuo.fkCarrera === carrId);
+                const precioCuoAct = preciosCuoCarr[preciosCuoCarr.length - 1];
+                setValues({
+                    ...values,
+                    currentPrecioCuo: precioCuoAct
+                });
+            }
+        } catch (error) {
+            throw error;
+        }
+    }
+
     const addPrecioCuo = async precioCuo => {
         try {
             const res = await clientAxios.post(`${API_URL_JSON_SERVER}/preciocuota`, precioCuo);
@@ -73,6 +91,7 @@ const PrecioCuoProvider = ({ children }) => {
             getPreciosCuo,
             getPreciosCuoByCarrId,
             getPrecioCuo,
+            getPrecioCuoActCarr,
             addPrecioCuo,
             deletePrecioCuo,
             updatePrecioCuo

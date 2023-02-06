@@ -48,7 +48,8 @@ const PagoCuotaProvider = ({ children }) => {
     const addPagoCuota = async pagoCuo => {
         try {
             // Obtener precio actual cuota y con monto abonado calcular porcentaje del pago realizado
-            pagoCuo.porcPago = 0;
+            pagoCuo.fecha = new Date(Date.now()).toLocaleDateString();
+            pagoCuo.estaEliminado = false;
             const res = await clientAxios.post(`${API_URL_JSON_SERVER}/pagocuota`, pagoCuo);
             res.status === 201 && await getPagosCuota();
             // pendiente en caso que llegue a completar el pago de la cuota, se debe actualizar la ...

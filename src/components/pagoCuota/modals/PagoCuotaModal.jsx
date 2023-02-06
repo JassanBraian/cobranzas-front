@@ -1,5 +1,6 @@
 import { Modal, Button } from "react-bootstrap";
 import PagoCuotaList from "../base/PagoCuotaList";
+import AddPagoCuota from "./AddPagoCuota";
 
 const PagoCuotaModal = ({ show, onHide }) => {
 
@@ -17,6 +18,7 @@ const PagoCuotaModal = ({ show, onHide }) => {
             </Modal.Header>
 
             <Modal.Body>
+                <AddPagoCuota />
                 <PagoCuotaList />
             </Modal.Body>
 
