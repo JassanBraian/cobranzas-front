@@ -6,6 +6,7 @@ const PagoCuotaModal = ({ show, onHide }) => {
     return (
         < Modal
             show={show}
+            size="xl"
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
@@ -20,7 +21,7 @@ const PagoCuotaModal = ({ show, onHide }) => {
             </Modal.Body>
 
             <Modal.Footer>
-                <Button variant="secondary" onClick={onHide}>
+                <Button variant="danger" onClick={onHide}>
                     Cerrar
                 </Button>
             </Modal.Footer>
