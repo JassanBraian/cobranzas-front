@@ -6,10 +6,12 @@ import { Table } from 'react-bootstrap';
 import CuotaItem from './CuotaItem';
 import CarreraContext from '../../../context/carrera/CarrerasContext';
 import AlumnoContext from '../../../context/alumno/AlumnoContext';
+import PagoCuotaModal from '../../pagoCuota/modals/PagoCuotaModal';
 
 const CuotaList = () => {
 
     const { getCuotasByAlumAndCarr, cuotas, clearCuotas } = useContext(CuotaContext);
+    const [showPagoCuotaModal, setShowPagoCuotaModal] = useState(false);
     const [showEditCuotaModal, setShowEditCuotaModal] = useState(false);
     const [showDeleteCuotaModal, setShowDeleteCuotaModal] = useState(false);
 
@@ -23,6 +25,10 @@ const CuotaList = () => {
     useEffect(() => {
         getCuotasByAlumAndCarr(currentAlumno.id, currentCarrera.id);
     }, [currentCarrera]);
+
+    const openPagoCuotaModal = () => {
+        setShowPagoCuotaModal(true);
+    };
 
     const openEditModal = () => {
         setShowEditCuotaModal(true);
@@ -58,6 +64,7 @@ const CuotaList = () => {
                                     cuota={cuota}
                                     key={index}
                                     index={index}
+                                    openPagoCuotaModal={openPagoCuotaModal}
                                     openEditModal={openEditModal}
                                     openDeleteModal={openDeleteModal}
                                 />
@@ -71,6 +78,11 @@ const CuotaList = () => {
                     }
                 </tbody>
             </Table>
+
+            <PagoCuotaModal
+                show={showPagoCuotaModal}
+                onHide={() => setShowPagoCuotaModal(false)}
+            />
 
             <EditCuotaModal
                 show={showEditCuotaModal}

@@ -120,6 +120,18 @@
       "id": 2
     }
   ],
+  "alumCarrera": [
+    {
+      "fkAlumno": 1,
+      "fkCarrera": 1,
+      "id": 1
+    },
+    {
+      "fkAlumno": 1,
+      "fkCarrera": 2,
+      "id": 2
+    }
+  ],
   "cuota": [
     {
       "numero": 1,
@@ -138,16 +150,30 @@
       "id": 2
     }
   ],
-  "alumCarrera": [
+  "pagoCuota": [
     {
-      "fkAlumno": 1,
-      "fkCarrera": 1,
+      "fkCuota": 1,
+      "monto": 2500,
+      "porcPago": 25,
+      "fecha": "2/5/2023",
+      "estaEliminado": false,
       "id": 1
     },
     {
-      "fkAlumno": 1,
-      "fkCarrera": 2,
+      "fkCuota": 1,
+      "monto": 2500,
+      "porcPago": 25,
+      "fecha": "2/5/2023",
+      "estaEliminado": false,
       "id": 2
+    },
+    {
+      "fkCuota": 2,
+      "monto": 5000,
+      "porcPago": 50,
+      "fecha": "2/5/2023",
+      "estaEliminado": false,
+      "id": 3
     }
   ],
   "usuario": [

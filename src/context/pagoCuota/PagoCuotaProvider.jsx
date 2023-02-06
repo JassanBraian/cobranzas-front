@@ -23,12 +23,14 @@ const PagoCuotaProvider = ({ children }) => {
 
     const getPagosCuotaByCuotaId = async cuotaId => {
         try {
-            const res = await clientAxios.get(`${API_URL_JSON_SERVER}/cuota`, cuotaId);
-            res.status === 200
-                && setValues({
+            const res = await clientAxios.get(`${API_URL_JSON_SERVER}/pagocuota`);
+
+            if (res.status === 200 && res.data) {
+                setValues({
                     ...values,
                     pagosCuota: res.data.filter(pagoCuo => pagoCuo.fkCuota === cuotaId)
                 });
+            }
         } catch (error) {
             throw error;
         }
