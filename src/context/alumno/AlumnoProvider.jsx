@@ -15,7 +15,10 @@ const AlumnoProvider = ({ children }) => {
     const getAlumnos = async () => {
         try {
             const res = await clientAxios.get(`${API_URL_JSON_SERVER}/alumno`);
-            res.status === 200 && setValues({ ...values, alumnos: res.data });
+            res.status === 200 && setValues({
+                ...values,
+                alumnos: res.data.filter(alum => alum.Eliminado === false)
+            });
         } catch (error) {
             throw error;
         }
@@ -34,6 +37,7 @@ const AlumnoProvider = ({ children }) => {
         try {
             alumno.fechaIngreso = new Date(Date.now()).toLocaleDateString();
             alumno.porcBeca = parseFloat(alumno.porcBeca);
+            alumno.Eliminado = false;
             const res = await clientAxios.post(`${API_URL_JSON_SERVER}/alumno`, alumno);
             res.status === 201 && await getAlumnos();
         } catch (error) {
@@ -52,9 +56,11 @@ const AlumnoProvider = ({ children }) => {
         }
     }
 
-    const deleteAlumno = async alumnoId => {
+    const deleteAlumno = async alumno => {
         try {
-            const res = await clientAxios.delete(`${API_URL_JSON_SERVER}/alumno/${alumnoId}`);
+            // const res = await clientAxios.delete(`${API_URL_JSON_SERVER}/alumno/${alumnoId}`);
+            alumno.Eliminado = true;
+            const res = await clientAxios.put(`${API_URL_JSON_SERVER}/alumno/${alumno.id}`, alumno);
             res.status === 200 && await getAlumnos();
         } catch (error) {
             throw error;

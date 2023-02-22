@@ -7,7 +7,7 @@ const DeleteAlumnoModal = ({ show, onHide }) => {
     const { deleteAlumno, currentAlumno } = useContext(AlumnoContext);
 
     const confirmDeleteAlumno = () => {
-        deleteAlumno(currentAlumno.id);
+        deleteAlumno(currentAlumno);
         onHide();
     }
     return (
