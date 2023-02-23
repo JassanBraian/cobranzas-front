@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPen, faEye } from "@fortawesome/free-solid-svg-icons";
 
-const PagoCuotaItem = ({ pagoCuota, index, openPagoCuotaModal, openEditModal, openDeleteModal }) => {
+const PagoCuotaItem = ({ pagoCuota, index, openEditModal, openDeleteModal }) => {
 
     const { getPagoCuota } = useContext(PagoCuotaContext);
 

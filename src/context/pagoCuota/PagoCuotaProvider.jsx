@@ -15,7 +15,10 @@ const PagoCuotaProvider = ({ children }) => {
     const getPagosCuota = async () => {
         try {
             const res = await clientAxios.get(`${API_URL_JSON_SERVER}/pagocuota`);
-            res.status === 200 && setValues({ ...values, pagosCuota: res.data });
+            res.status === 200 && setValues({
+                ...values,
+                pagosCuota: res.data.filter(pagoCuo => pagoCuo.Eliminado === false)
+            });
         } catch (error) {
             throw error;
         }
@@ -28,7 +31,8 @@ const PagoCuotaProvider = ({ children }) => {
             if (res.status === 200 && res.data) {
                 setValues({
                     ...values,
-                    pagosCuota: res.data.filter(pagoCuo => pagoCuo.fkCuota === cuotaId)
+                    pagosCuota: res.data
+                        .filter(pagoCuo => pagoCuo.fkCuota === cuotaId && pagoCuo.Eliminado === false)
                 });
             }
         } catch (error) {
@@ -49,7 +53,7 @@ const PagoCuotaProvider = ({ children }) => {
         try {
             // Obtener precio actual cuota y con monto abonado calcular porcentaje del pago realizado
             pagoCuo.fecha = new Date(Date.now()).toLocaleDateString();
-            pagoCuo.estaEliminado = false;
+            pagoCuo.Eliminado = false;
             const res = await clientAxios.post(`${API_URL_JSON_SERVER}/pagocuota`, pagoCuo);
             res.status === 201 && await getPagosCuota();
             // pendiente en caso que llegue a completar el pago de la cuota, se debe actualizar la ...
@@ -68,9 +72,10 @@ const PagoCuotaProvider = ({ children }) => {
         }
     }
 
-    const deletePagoCuota = async pagoCuoId => {
+    const deletePagoCuota = async pagoCuo => {
         try {
-            const res = await clientAxios.delete(`${API_URL_JSON_SERVER}/pagocuota/${pagoCuoId}`);
+            pagoCuo.Eliminado = true;
+            const res = await clientAxios.put(`${API_URL_JSON_SERVER}/pagocuota/${pagoCuo.id}`, pagoCuo);
             res.status === 200 && await getPagosCuota();
         } catch (error) {
             throw error;

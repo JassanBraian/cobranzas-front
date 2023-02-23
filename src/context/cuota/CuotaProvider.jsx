@@ -15,7 +15,10 @@ const CuotaProvider = ({ children }) => {
     const getCuotas = async () => {
         try {
             const res = await clientAxios.get(`${API_URL_JSON_SERVER}/cuota`);
-            res.status === 200 && setValues({ ...values, cuotas: res.data });
+            res.status === 200 && setValues({
+                ...values,
+                cuotas: res.data.filter(cuo => cuo.Eliminado === false)
+            });
         } catch (error) {
             throw error;
         }
@@ -60,6 +63,7 @@ const CuotaProvider = ({ children }) => {
             cuota.numero = 0;
             cuota.estadoCuo = false;
             cuota.fecha = new Date(Date.now()).toLocaleDateString();
+            cuota.Eliminado = false;
             const res = await clientAxios.post(`${API_URL_JSON_SERVER}/cuota`, cuota);
             res.status === 201 && await getCuotas();
         } catch (error) {
@@ -76,9 +80,10 @@ const CuotaProvider = ({ children }) => {
         }
     }
 
-    const deleteCuota = async cuotaId => {
+    const deleteCuota = async cuota => {
         try {
-            const res = await clientAxios.delete(`${API_URL_JSON_SERVER}/cuota/${cuotaId}`);
+            cuota.Eliminado = true;
+            const res = await clientAxios.put(`${API_URL_JSON_SERVER}/cuota/${cuota.id}`, cuota);
             res.status === 200 && await getCuotas();
         } catch (error) {
             throw error;

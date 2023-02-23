@@ -225,6 +225,14 @@
       "fecha": "2/6/2023",
       "Eliminado": false,
       "id": 5
+    },
+    {
+      "fkCuota": 1,
+      "monto": "1500",
+      "porcPago": "16.7",
+      "fecha": "2/23/2023",
+      "Eliminado": true,
+      "id": 6
     }
   ],
   "usuario": [

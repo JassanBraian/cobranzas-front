@@ -15,7 +15,10 @@ const PrecioCuoProvider = ({ children }) => {
     const getPreciosCuo = async () => {
         try {
             const res = await clientAxios.get(`${API_URL_JSON_SERVER}/preciocuota`);
-            res.status === 200 && setValues({ ...values, preciosCuo: res.data });
+            res.status === 200 && setValues({
+                ...values,
+                preciosCuo: res.data.filter(preCuo => preCuo.Eliminado === false)
+            });
         } catch (error) {
             throw error;
         }
@@ -24,8 +27,11 @@ const PrecioCuoProvider = ({ children }) => {
     const getPreciosCuoByCarrId = async carrId => {
         try {
             const res = await clientAxios.get(`${API_URL_JSON_SERVER}/preciocuota`);
-            res.status === 200
-                && setValues({ ...values, preciosCuo: res.data.filter(preCuo => preCuo.fkCarrera === carrId) });
+            res.status === 200 && setValues({
+                ...values,
+                preciosCuo: res.data
+                    .filter(preCuo => preCuo.fkCarrera === carrId && preCuo.Eliminado === false)
+            });
         } catch (error) {
             throw error;
         }
@@ -46,7 +52,7 @@ const PrecioCuoProvider = ({ children }) => {
             const resPreciosCuo = await clientAxios.get(`${API_URL_JSON_SERVER}/preciocuota`);
             if (resPreciosCuo.status === 200 && resPreciosCuo.data) {
                 const preciosCuoCarr = resPreciosCuo.data
-                    .filter(preCuo => preCuo.fkCarrera === carrId);
+                    .filter(preCuo => preCuo.fkCarrera === carrId && preCuo.Eliminado === false);
                 const precioCuoAct = preciosCuoCarr[preciosCuoCarr.length - 1];
                 setValues({
                     ...values,
@@ -60,6 +66,7 @@ const PrecioCuoProvider = ({ children }) => {
 
     const addPrecioCuo = async precioCuo => {
         try {
+            precioCuo.Eliminado = false;
             const res = await clientAxios.post(`${API_URL_JSON_SERVER}/preciocuota`, precioCuo);
             res.status === 201 && await getPreciosCuo();
         } catch (error) {
@@ -76,9 +83,10 @@ const PrecioCuoProvider = ({ children }) => {
         }
     };
 
-    const deletePrecioCuo = async precioCuoId => {
+    const deletePrecioCuo = async precioCuo => {
         try {
-            const res = await clientAxios.delete(`${API_URL_JSON_SERVER}/preciocuota/${precioCuoId}`);
+            precioCuo.Eliminado = true;
+            const res = await clientAxios.put(`${API_URL_JSON_SERVER}/preciocuota/${precioCuo.id}`, precioCuo);
             res.status === 200 && await getPreciosCuo();
         } catch (error) {
             throw error;

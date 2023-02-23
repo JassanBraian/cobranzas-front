@@ -1,16 +1,14 @@
 import { useContext } from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import CuotaContext from '../../../context/cuota/CuotaContext';
+import PagoCuotaContext from '../../../context/pagoCuota/PagoCuotaContext';
 
-const DeleteCuotaModal = ({ show, onHide }) => {
+const DeletePagoCuotaModal = ({ show, onHide }) => {
+    const { deletePagoCuota, currentPagoCuo } = useContext(PagoCuotaContext);
 
-    const { deleteCuota, currentCuota } = useContext(CuotaContext);
-
-    const confirmDeleteCuota = () => {
-        deleteCuota(currentCuota);
+    const confirmDelete = () => {
+        deletePagoCuota(currentPagoCuo);
         onHide();
     }
-
     return (
         <>
             <Modal
@@ -29,7 +27,7 @@ const DeleteCuotaModal = ({ show, onHide }) => {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button variant="danger" onClick={confirmDeleteCuota}>
+                    <Button variant="danger" onClick={confirmDelete}>
                         Eliminar
                     </Button>
                     <Button variant="secondary" onClick={onHide}>
@@ -41,4 +39,4 @@ const DeleteCuotaModal = ({ show, onHide }) => {
     );
 };
 
-export default DeleteCuotaModal;
+export default DeletePagoCuotaModal;
