@@ -63,8 +63,9 @@ const PagoCuotaProvider = ({ children }) => {
         }
     }
 
-    const updatePagoCuota = async pagoCuo => {
+    const updatePagoCuota = async (pagoCuo, precioCuo) => {
         try {
+            pagoCuo.porcPago = (pagoCuo.monto * 100 / precioCuo).toFixed(1)
             const res = await clientAxios.put(`${API_URL_JSON_SERVER}/pagocuota/${pagoCuo.id}`, pagoCuo);
             res.status === 200 && await getPagosCuota();
         } catch (error) {
