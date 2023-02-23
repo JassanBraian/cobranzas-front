@@ -23,21 +23,25 @@ const AlumCarreraProvider = ({ children }) => {
 
     const getAlumCarrerasByAlumId = async alumId => {
         try {
+            const resCarreras = await clientAxios.get(`${API_URL_JSON_SERVER}/carrera`);
+            const carreras = resCarreras.data.filter(carr => carr.Eliminado === false);
+
+            const resPreciosCuo = await clientAxios.get(`${API_URL_JSON_SERVER}/preciocuota`);
+            const preciosCuo = resPreciosCuo.data.filter(preCuo => preCuo.Eliminado === false);
+
             const resAlumCarr = await clientAxios.get(`${API_URL_JSON_SERVER}/alumcarrera`);
 
-            const resCarreras = await clientAxios.get(`${API_URL_JSON_SERVER}/carrera`);
-            const resPreciosCuo = await clientAxios.get(`${API_URL_JSON_SERVER}/preciocuota`);
-
+            // Este servicio NO verifica la propiedad Eliminado... Tema dejado para aprlicar diric en net
             if (resAlumCarr.status === 200 && resAlumCarr.data
-                && resCarreras.status === 200 && resCarreras.data
-                && resPreciosCuo.status === 200 && resPreciosCuo.data) {
-                const carrerasAlum = resAlumCarr.data.filter(alumCarr => alumCarr.fkAlumno === alumId);
+                && resCarreras.status === 200 && carreras
+                && resPreciosCuo.status === 200 && preciosCuo) {
 
-                if (carrerasAlum.length > 0) {
+                const carrerasAlumno = resAlumCarr.data.filter(alumCarr => alumCarr.fkAlumno === alumId);
 
-                    carrerasAlum.map(carrAlum => {
-                        const carrera = resCarreras.data.filter(carrera => carrera.id === carrAlum.fkCarrera)[0];
-                        const preciosCuoCarr = resPreciosCuo.data
+                if (carrerasAlumno.length > 0) {
+                    carrerasAlumno.map(carrAlum => {
+                        const carrera = carreras.filter(carrera => carrera.id === carrAlum.fkCarrera)[0];
+                        const preciosCuoCarr = preciosCuo
                             .filter(preCuo => preCuo.fkCarrera === carrera.id);
                         const precioCuoAct = preciosCuoCarr[preciosCuoCarr.length - 1];
 
@@ -47,7 +51,7 @@ const AlumCarreraProvider = ({ children }) => {
 
                     setValues({
                         ...values,
-                        alumnosCarreras: carrerasAlum
+                        alumnosCarreras: carrerasAlumno
                     });
                 }
             }

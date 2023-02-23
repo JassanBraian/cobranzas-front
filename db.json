@@ -39,8 +39,9 @@
     {
       "descripcion": "Prueba06",
       "cantCuotas": 6,
-      "Eliminado": false,
-      "id": 7
+      "Eliminado": true,
+      "id": 7,
+      "precioCuo": 5000
     }
   ],
   "preciocuota": [

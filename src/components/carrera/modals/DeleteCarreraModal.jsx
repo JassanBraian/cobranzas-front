@@ -6,7 +6,7 @@ const DeleteCarreraModal = ({ show, onHide }) => {
     const { deleteCarrera, currentCarrera } = useContext(CarreraContext);
 
     const confirmDeleteCarrera = () => {
-        deleteCarrera(currentCarrera.id);
+        deleteCarrera(currentCarrera);
         onHide();
     }
 
