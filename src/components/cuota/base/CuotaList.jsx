@@ -10,17 +10,13 @@ import PagoCuotaModal from '../../pagoCuota/modals/PagoCuotaModal';
 
 const CuotaList = () => {
 
-    const { getCuotasByAlumAndCarr, cuotas, clearCuotas } = useContext(CuotaContext);
+    const { getCuotasByAlumAndCarr, cuotas } = useContext(CuotaContext);
     const [showPagoCuotaModal, setShowPagoCuotaModal] = useState(false);
     const [showEditCuotaModal, setShowEditCuotaModal] = useState(false);
     const [showDeleteCuotaModal, setShowDeleteCuotaModal] = useState(false);
 
     const { currentAlumno } = useContext(AlumnoContext);
     const { currentCarrera } = useContext(CarreraContext);
-
-    useEffect(() => {
-        clearCuotas();
-    }, []);
 
     useEffect(() => {
         getCuotasByAlumAndCarr(currentAlumno.id, currentCarrera.id);

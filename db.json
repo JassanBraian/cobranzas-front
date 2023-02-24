@@ -163,6 +163,12 @@
       "fkCarrera": 2,
       "Eliminado": false,
       "id": 2
+    },
+    {
+      "fkAlumno": 2,
+      "fkCarrera": 2,
+      "Eliminado": false,
+      "id": 3
     }
   ],
   "cuota": [

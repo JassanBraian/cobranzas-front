@@ -49,6 +49,8 @@ const AlumCarreraProvider = ({ children }) => {
                         carrAlum.carrera.precioCuo = precioCuoAct.monto;
                     });
 
+                    console.log('a1', carrerasAlumno);
+
                     setValues({
                         ...values,
                         alumnosCarreras: carrerasAlumno
@@ -89,6 +91,9 @@ const AlumCarreraProvider = ({ children }) => {
 
     const clearAlumCarreras = () => setValues({ ...values, alumnosCarreras: [] });
 
+    //const clearAlumCarreras = () => setValues({ ...values, alumnosCarreras: [] });
+
+    
     return (
         <AlumCarreraContext.Provider value={{
             ...values,

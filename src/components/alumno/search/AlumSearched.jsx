@@ -1,14 +1,10 @@
-import { useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import AlumnoContext from '../../../context/alumno/AlumnoContext';
 import { Table } from 'react-bootstrap';
 
 const AlumSearched = () => {
 
-    const { currentAlumno, clearCurrentAlumno } = useContext(AlumnoContext);
-
-    useEffect(() => {
-        clearCurrentAlumno();
-    }, []);
+    const { currentAlumno } = useContext(AlumnoContext);
 
     return (
         <>

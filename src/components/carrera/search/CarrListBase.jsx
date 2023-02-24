@@ -1,24 +1,14 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import AlumCarreraContext from '../../../context/alumCarrera/AlumCarreraContext';
 import { Table, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHandPointer } from "@fortawesome/free-solid-svg-icons";
-import AlumnoContext from '../../../context/alumno/AlumnoContext';
 import CarreraContext from '../../../context/carrera/CarrerasContext';
 
 const CarrListBase = ({ closeSearchModal }) => {
 
-    const { alumnosCarreras, clearAlumCarreras, getAlumCarrerasByAlumId } = useContext(AlumCarreraContext);
-    const { currentAlumno } = useContext(AlumnoContext);
-    const { getCarrera } = useContext(CarreraContext);
-    
-    useEffect(() => {
-        clearAlumCarreras();
-    }, []);
-
-    useEffect(() => {
-        getAlumCarrerasByAlumId(currentAlumno.id);
-    }, [currentAlumno]);
+    const { alumnosCarreras } = useContext(AlumCarreraContext);
+    const { getCarrera } = useContext(CarreraContext);    
 
     return (
         <Table striped bordered hover variant="dark">

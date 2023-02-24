@@ -1,13 +1,19 @@
 import { useContext, useEffect } from 'react';
 import CarreraContext from '../../../context/carrera/CarrerasContext';
+import AlumCarreraContext from '../../../context/alumCarrera/AlumCarreraContext';
+
 import { Table } from 'react-bootstrap';
 
 const SearchedCarrera = () => {
-    const { currentCarrera, clearCurrentCarr } = useContext(CarreraContext);
+    const { currentCarrera, getCarrera, clearCurrentCarrera } = useContext(CarreraContext);
+    const { alumnosCarreras } = useContext(AlumCarreraContext);    
 
     useEffect(() => {
-        clearCurrentCarr();
-    }, []);
+        if (alumnosCarreras.length === 1) {
+            getCarrera(alumnosCarreras[0].fkCarrera);
+        }
+    }, [alumnosCarreras]);
+
 
     return (
         <>

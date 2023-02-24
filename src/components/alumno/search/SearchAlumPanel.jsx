@@ -1,13 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Button } from 'react-bootstrap';
 import SearchAlumModal from './SearchAlumModal';
 import AlumSearched from './AlumSearched';
+import AlumnoContext from '../../../context/alumno/AlumnoContext';
+import AlumCarreraContext from '../../../context/alumCarrera/AlumCarreraContext';
 
 const SearchAlumno = () => {
 
+    const { getAlumCarrerasByAlumId } = useContext(AlumCarreraContext);
+    const { currentAlumno } = useContext(AlumnoContext);
+
     const [showSearchAlumModal, setShowSearchAlumModal] = useState(false);
+
+    useEffect(() => {
+        console.log(currentAlumno)
+        currentAlumno.id && getAlumCarrerasByAlumId(currentAlumno.id);
+    }, [currentAlumno]);
 
     return (
         <>

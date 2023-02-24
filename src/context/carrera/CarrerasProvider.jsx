@@ -125,7 +125,7 @@ const CarrerasProvider = ({ children }) => {
     }
   };
 
-  const clearCurrentCarr = () => setValues({ ...values, currentCarrera: {} });
+  const clearCurrentCarrera = () => setValues({ ...values, currentCarrera: {} });
 
   return (
     <CarrerasContext.Provider value={{
@@ -135,7 +135,7 @@ const CarrerasProvider = ({ children }) => {
       addCarrera,
       deleteCarrera,
       updateCarrera,
-      clearCurrentCarr
+      clearCurrentCarrera
     }}>
       {children}
     </CarrerasContext.Provider>
