@@ -3,9 +3,9 @@ import { useContext } from 'react';
 import AlumnoContext from '../../../context/alumno/AlumnoContext';
 import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faPen } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faPen, faI } from "@fortawesome/free-solid-svg-icons";
 
-const AlumnoItem = ({ alumno, index, openEditModal, openDeleteModal, }) => {
+const AlumnoItem = ({ alumno, index, openEditModal, openDeleteModal, openInscripModal }) => {
 
     const { getAlumno } = useContext(AlumnoContext);
 
@@ -21,6 +21,16 @@ const AlumnoItem = ({ alumno, index, openEditModal, openDeleteModal, }) => {
                 <td> {alumno.porcBeca}% </td>
                 <td> {alumno.fechaIngreso} </td>
                 <td className="text-center">
+                    <Button
+                        variant="primary"
+                        className='me-2'
+                        onClick={() => {
+                            getAlumno(alumno.id);
+                            openInscripModal();
+                        }}
+                    >
+                        <FontAwesomeIcon icon={faI} />
+                    </Button>
                     <Button
                         variant="warning"
                         className='me-2'

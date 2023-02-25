@@ -15,7 +15,6 @@ const SearchAlumno = () => {
     const [showSearchAlumModal, setShowSearchAlumModal] = useState(false);
 
     useEffect(() => {
-        console.log(currentAlumno)
         currentAlumno.id && getAlumCarrerasByAlumId(currentAlumno.id);
     }, [currentAlumno]);
 

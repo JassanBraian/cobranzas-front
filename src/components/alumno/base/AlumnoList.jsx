@@ -7,6 +7,7 @@ import { faAdd } from "@fortawesome/free-solid-svg-icons";
 import AddAlumnoModal from '../modals/AddAlumnoModal';
 import EditAlumnoModal from '../modals/EditAlumnoModal';
 import DeleteAlumnoModal from '../modals/DeleteAlumnoModal';
+import InscripAlumCarrModal from '../inscription/InscripAlumCarrModal';
 
 const AlumnoList = () => {
 
@@ -15,6 +16,7 @@ const AlumnoList = () => {
     const [showAddAlumnoModal, setShowAddAlumnoModal] = useState(false);
     const [showEditAlumnoModal, setShowEditAlumnoModal] = useState(false);
     const [showDeleteAlumnoModal, setShowDeleteAlumnoModal] = useState(false);
+    const [showInscripAlumCarrModal, setShowInscripAlumCarrModal] = useState(false);
 
     useEffect(() => {
         getAlumnos();
@@ -27,6 +29,8 @@ const AlumnoList = () => {
     const openDeleteModal = () => {
         setShowDeleteAlumnoModal(true);
     };
+
+    const openInscripModal = () => setShowInscripAlumCarrModal(true);
 
     return (
         <>
@@ -68,6 +72,7 @@ const AlumnoList = () => {
                                     index={index}
                                     openEditModal={openEditModal}
                                     openDeleteModal={openDeleteModal}
+                                    openInscripModal={openInscripModal}
                                 />
                             )
                             :
@@ -93,6 +98,11 @@ const AlumnoList = () => {
             <DeleteAlumnoModal
                 show={showDeleteAlumnoModal}
                 onHide={() => setShowDeleteAlumnoModal(false)}
+            />
+
+            <InscripAlumCarrModal
+                show={showInscripAlumCarrModal}
+                onHide={() => setShowInscripAlumCarrModal(false)}
             />
         </>
     );
