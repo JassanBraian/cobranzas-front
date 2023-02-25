@@ -128,13 +128,15 @@ const AlumCarreraProvider = ({ children }) => {
 
     const addAlumCarrera = async alumCarrera => {
         try {
+            alumCarrera.Eliminado = false;
             const res = await clientAxios.post(`${API_URL_JSON_SERVER}/alumcarrera`, alumCarrera);
-            res.status === 201 && await getAlumno(alumCarrera.alumId);
+            res.status === 201 && await getAlumno(alumCarrera.fkAlumno);
         } catch (error) {
             throw error;
         }
     };
 
+    // Fuera de uso... No probado
     const deleteAlumCarrera = async alumCarreraId => {
         try {
             const res = await clientAxios.delete(`${API_URL_JSON_SERVER}/alumcarrera/${alumCarreraId}`);

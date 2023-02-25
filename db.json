@@ -169,6 +169,12 @@
       "fkCarrera": 2,
       "Eliminado": false,
       "id": 3
+    },
+    {
+      "fkAlumno": 2,
+      "fkCarrera": 3,
+      "Eliminado": false,
+      "id": 4
     }
   ],
   "cuota": [
@@ -189,6 +195,15 @@
       "fkCarrera": 1,
       "Eliminado": false,
       "id": 2
+    },
+    {
+      "numero": 0,
+      "estadoCuo": "impago",
+      "fkAlumno": 2,
+      "fkCarrera": 3,
+      "fecha": "2/25/2023",
+      "Eliminado": false,
+      "id": 3
     }
   ],
   "pagoCuota": [

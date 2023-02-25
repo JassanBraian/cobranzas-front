@@ -56,14 +56,18 @@ const CuotaProvider = ({ children }) => {
         }
     }
 
-    const addCuota = async cuota => {
+    const addCuota = async (alumId, carrId) => {
         try {
+            const cuota = {};
             // Obtener ultimo numero de cuota con estado pagado para cargar +1 en la sgte linea
             // En caso de existir cuota sin terminar de abonar, no se puede abonar la sgte
             cuota.numero = 0;
-            cuota.estadoCuo = false;
+            cuota.estadoCuo = "impago";
+            cuota.fkAlumno = alumId;
+            cuota.fkCarrera = carrId;
             cuota.fecha = new Date(Date.now()).toLocaleDateString();
             cuota.Eliminado = false;
+
             const res = await clientAxios.post(`${API_URL_JSON_SERVER}/cuota`, cuota);
             res.status === 201 && await getCuotas();
         } catch (error) {
