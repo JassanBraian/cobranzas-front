@@ -27,6 +27,8 @@ const AlumCarreraProvider = ({ children }) => {
 
     const getAlumCarrerasByAlumId = async alumId => {
         try {
+            //Peticion a .net:
+            // const resCarreras = await clientAxios.get(`${API_URL_JSON_SERVER}/carrera`, alumId);
             const resCarreras = await clientAxios.get(`${API_URL_JSON_SERVER}/carrera`);
             const carreras = resCarreras.data.filter(carr => carr.Eliminado === false);
 

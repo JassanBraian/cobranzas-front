@@ -49,11 +49,12 @@ const PrecioCuoProvider = ({ children }) => {
     const getPrecioCuoActCarr = async carrId => {
         try {
             // Sin uso por el momento... verif funcionamiento
-            const resPreciosCuo = await clientAxios.get(`${API_URL_JSON_SERVER}/preciocuota`);
+            const resPreciosCuo = await clientAxios.get(`${API_URL_JSON_SERVER}/preciocuota`, carrId);
             if (resPreciosCuo.status === 200 && resPreciosCuo.data) {
                 const preciosCuoCarr = resPreciosCuo.data
                     .filter(preCuo => preCuo.fkCarrera === carrId && preCuo.Eliminado === false);
                 const precioCuoAct = preciosCuoCarr[preciosCuoCarr.length - 1];
+                
                 setValues({
                     ...values,
                     currentPrecioCuo: precioCuoAct

@@ -29,11 +29,10 @@ const CuotaProvider = ({ children }) => {
             const alumAndCarr = { fkAlum, fkCarr };
             const res = await clientAxios.get(`${API_URL_JSON_SERVER}/cuota`, alumAndCarr);
             //Eliminar logica de front y en .net añadir metodo que espere obj de params
-            res.status === 200
-                && setValues({
-                    ...values,
-                    cuotas: res.data.filter(cuo => cuo.fkAlumno === fkAlum && cuo.fkCarrera === fkCarr)
-                });
+            res.status === 200 && setValues({
+                ...values,
+                cuotas: res.data.filter(cuo => cuo.fkAlumno === fkAlum && cuo.fkCarrera === fkCarr)
+            });
         } catch (error) {
             throw error;
         }
