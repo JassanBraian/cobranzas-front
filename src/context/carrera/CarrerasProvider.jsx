@@ -1,6 +1,5 @@
 import { useState, useContext } from 'react';
 import CarrerasContext from './CarrerasContext';
-import { API_URL_JSON_SERVER } from '../../config/jsonserver/connection';
 import clientAxios from '../../config/axios/axios';
 import PrecioCuoContext from '../../context/precioCuota/PrecioCuoContext';
 
@@ -22,9 +21,10 @@ const CarrerasProvider = ({ children }) => {
       //const res = await clientAxios.get(`${API_URL_JSON_SERVER}/carrera`);
       //res.status === 200 && setValues({ ...values, carreras: res.data });
 
-      const resCarreras = await clientAxios.get(`${API_URL_JSON_SERVER}/carrera`);
+      const resCarreras = await clientAxios.get(`/carrera/ObtenerTodos`);
       const carreras = resCarreras.data.filter(carr => carr.Eliminado === false);
-      const resPreciosCuo = await clientAxios.get(`${API_URL_JSON_SERVER}/preciocuota`);
+
+      const resPreciosCuo = await clientAxios.get(`/preciocuota`);
       const preciosCuo = resPreciosCuo.data.filter(preCuo => preCuo.Eliminado === false);
 
       if (resCarreras.status === 200 && carreras
@@ -50,8 +50,8 @@ const CarrerasProvider = ({ children }) => {
       // const res = await clientAxios.get(`${API_URL_JSON_SERVER}/carrera/${carreraId}`);
       // res.status === 200 && setValues({ ...values, currentCarrera: res.data });
 
-      const resCarrera = await clientAxios.get(`${API_URL_JSON_SERVER}/carrera/${carreraId}`);
-      const resPreciosCuo = await clientAxios.get(`${API_URL_JSON_SERVER}/preciocuota`);
+      const resCarrera = await clientAxios.get(`/carrera/${carreraId}`);
+      const resPreciosCuo = await clientAxios.get(`/preciocuota`);
 
       if (resCarrera.status === 200 && resCarrera.data
         && resPreciosCuo.status === 200 && resPreciosCuo.data) {
@@ -76,7 +76,7 @@ const CarrerasProvider = ({ children }) => {
 
       carrera.cantCuotas = parseFloat(carrera.cantCuotas);
 
-      const resNewCarrera = await clientAxios.post(`${API_URL_JSON_SERVER}/carrera`, carrera);
+      const resNewCarrera = await clientAxios.post(`/carrera`, carrera);
       if (resNewCarrera.status === 201) {
         addPrecioCuo({
           fkCarrera: resNewCarrera.data.id,
@@ -99,7 +99,7 @@ const CarrerasProvider = ({ children }) => {
 
       carrera.cantCuotas = parseFloat(carrera.cantCuotas);
 
-      const resUpdateCarrera = await clientAxios.put(`${API_URL_JSON_SERVER}/carrera/${carrera.id}`, carrera);
+      const resUpdateCarrera = await clientAxios.put(`/carrera/${carrera.id}`, carrera);
       if (resUpdateCarrera.status === 200) {
         addPrecioCuo({
           fkCarrera: resUpdateCarrera.data.id,
@@ -118,7 +118,7 @@ const CarrerasProvider = ({ children }) => {
     try {
       //const res = await clientAxios.delete(`${API_URL_JSON_SERVER}/carrera/${carreraId}`);
       carrera.Eliminado = true;
-      const res = await clientAxios.put(`${API_URL_JSON_SERVER}/carrera/${carrera.id}`, carrera);
+      const res = await clientAxios.put(`/carrera/${carrera.id}`, carrera);
       res.status === 200 && await getCarreras();
     } catch (error) {
       throw error;
