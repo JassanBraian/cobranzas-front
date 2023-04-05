@@ -60,7 +60,7 @@ const CarreraList = () => {
                 </thead>
                 <tbody>
                     {
-                        carreras ?
+                        carreras && Object.keys(carreras).length > 0 ?
                             carreras.map((carrera, index) =>
                                 <CarreraItem
                                     carrera={carrera}
